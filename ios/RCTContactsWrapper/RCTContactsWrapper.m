@@ -197,7 +197,7 @@ RCT_EXPORT_METHOD(getEmail:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseR
       lNameObject = (__bridge NSString *) ABRecordCopyValue(person, kABPersonLastNameProperty);
 
       NSString *fullName = [self getFullNameForFirst:fNameObject middle:mNameObject last:lNameObject];
-      NSString identifier = [person uniqueId];
+      NSString *identifier = (__bridge NSString *) ABRecordCopyValue(person, kABPersonSocialProfileUserIdentifierKey);
       //Return full name
       [contactData setValue:fullName forKey:@"name"];
       [contactData setValue:identifier forKey:@"identifier"];
